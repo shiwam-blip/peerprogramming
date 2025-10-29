@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Ball</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --ball: #ef4444;
+      --ground: rgba(255,255,255,0.06);
+      --size: 80px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--bg) 0%, #0b1220 100%);
+      font-family: system-ui, sans-serif;
+    }
+
+    .scene {
+      width: 320px;
+      height: 420px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 12px;
+      padding-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    }
+
+    .ground {
+      position: absolute;
+      left: 0; right: 0; bottom: 8px;
+      height: 10px;
+      background: var(--ground);
+      border-radius: 6px;
+    }
+
+    .ball {
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff6, transparent 20%), var(--ball);
+      box-shadow: 0 12px 18px rgba(2,6,23,0.5), inset 0 -6px 12px rgba(0,0,0,0.15);
+      transform-origin: center bottom;
+      animation: bounce 1s cubic-bezier(.28,.84,.42,1) infinite;
+    }
+
+    @keyframes bounce {
+      0%   { transform: translateY(0) scaleX(1) scaleY(1); }
+      30%  { transform: translateY(-220px) scaleX(0.98) scaleY(1.02); }
+      48%  { transform: translateY(-40px) scaleX(1.02) scaleY(0.98); }
+      60%  { transform: translateY(0) scaleX(1.15) scaleY(0.85); }
+      72%  { transform: translateY(-14px) scaleX(0.98) scaleY(1.02); }
+      100% { transform: translateY(0) scaleX(1) scaleY(1); }
+    }
+
+    .scene::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 8px;
+      width: 100px; height: 6px; border-radius: 6px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      animation: groundPulse 1s cubic-bezier(.28,.84,.42,1) infinite;
+    }
+
+    @keyframes groundPulse {
+      0%   { transform: translateX(-50%) scaleX(1); opacity: 1; }
+      60%  { transform: translateX(-50%) scaleX(0.85); opacity: .6; }
+      100% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+    }
+
+    @media (max-width: 360px) {
+      :root { --size: 64px; }
+      .scene { width: 260px; height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div class="ground"></div>
+    <div class="ball"></div>
+
+    
+  </main>
+</body>
+</html>
