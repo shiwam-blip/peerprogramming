@@ -1,1 +1,1 @@
-This is to create a conflict in the GitHub
+This is so that conflict is created
