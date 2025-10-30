@@ -75,5 +75,8 @@ You can tweak the look and feel by modifying CSS variables at the top of the `<s
 * Layered elements for depth illusion
 
 ---
+## 🧠 Learning CherryPick
+This is the updated code for Cherry Pick
+
 
 **Made with ❤️ using HTML & CSS**
